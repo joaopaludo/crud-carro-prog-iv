@@ -188,10 +188,10 @@ export class CarListComponent implements OnInit {
 
   private resetCar(): Car {
     return {
-      model: '',
-      brand: '',
-      year: new Date().getFullYear(),
-      color: ''
+      modelo: '',
+      marca: '',
+      ano: new Date().getFullYear(),
+      cor: ''
     };
   }
 }
