@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-export interface Car {
+export interface Carro {
     id?: number;
     modelo: string;
     marca: string;
@@ -18,19 +18,19 @@ export class CarService {
 
     constructor(private http: HttpClient) { }
 
-    getCars(): Observable<Car[]> {
-        return this.http.get<Car[]>(this.apiUrl);
+    getCarros(): Observable<Carro[]> {
+        return this.http.get<Carro[]>(this.apiUrl);
     }
 
-    createCar(car: Car): Observable<Car> {
-        return this.http.post<Car>(this.apiUrl, car);
+    createCarro(carro: Carro): Observable<Carro> {
+        return this.http.post<Carro>(this.apiUrl, carro);
     }
 
-    updateCar(car: Car): Observable<Car> {
-        return this.http.put<Car>(`${this.apiUrl}/${car.id}`, car);
+    updateCarro(carro: Carro): Observable<Carro> {
+        return this.http.put<Carro>(`${this.apiUrl}/${carro.id}`, carro);
     }
 
-    deleteCar(id: number): Observable<void> {
+    deleteCarro(id: number): Observable<void> {
         return this.http.delete<void>(`${this.apiUrl}/${id}`);
     }
 }

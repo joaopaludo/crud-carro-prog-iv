@@ -1,0 +1,42 @@
+<div class="container">
+    <h1>Gerenciamento de Carros</h1>
+
+    <form (ngSubmit)="onSubmit()" class="car-form">
+        <input [(ngModel)]="currentCar.modelo" name="modelo" placeholder="Modelo" required>
+        <input [(ngModel)]="currentCar.marca" name="marca" placeholder="Marca" required>
+        <input type="number" [(ngModel)]="currentCar.ano" name="ano" placeholder="Ano" required>
+        <input [(ngModel)]="currentCar.cor" name="cor" placeholder="Cor" required>
+        <button type="submit">
+            {{ isEditing ? 'Atualizar' : 'Adicionar' }}
+        </button>
+        <button *ngIf="isEditing" type="button" (click)="cancelEdit()">
+            Cancelar
+        </button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Modelo</th>
+                <th>Marca</th>
+                <th>Ano</th>
+                <th>Cor</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let carro of carros">
+                <td>{{ carro.id }}</td>
+                <td>{{ carro.modelo }}</td>
+                <td>{{ carro.marca }}</td>
+                <td>{{ carro.ano }}</td>
+                <td>{{ carro.cor }}</td>
+                <td>
+                    <button (click)="editCarro(carro)">Editar</button>
+                    <button (click)="deleteCarro(carro.id!)">Excluir</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
