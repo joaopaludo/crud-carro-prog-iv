@@ -20,8 +20,6 @@ app.use(bodyParser.json());
 app.post('/carros', async (req, res) => {
     const { modelo, marca, ano, cor } = req.body;
     try {
-        console.log(modelo, marca, ano, cor);
-
         const result = await pool.query(
             'INSERT INTO carro (modelo, marca, ano, cor) VALUES ($1, $2, $3, $4) RETURNING *',
             [modelo, marca, ano, cor]
